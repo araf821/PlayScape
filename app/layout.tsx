@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { Toaster } from "@/components/ui/Toaster";
 import { comfortaa, pacifico } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
@@ -28,6 +29,7 @@ export default function RootLayout({
         <div className="container mx-auto h-full max-w-7xl pt-12">
           {children}
         </div>
+        <Toaster />
       </body>
     </html>
   );

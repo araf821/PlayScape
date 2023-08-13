@@ -60,6 +60,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        comfortaa: ["var(--font-comfortaa)", "sans-serif"],
+        pacifico: ["var(--font-pacifico)", "serif"],
       },
       keyframes: {
         "accordion-down": {

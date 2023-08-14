@@ -1,10 +1,11 @@
 import SignIn from "@/components/SignIn";
+import SignUp from "@/components/SignUp";
 import { buttonVariants } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
-const SignInPage = () => {
+const SignUpPage = () => {
   return (
     <div className="absolute inset-0">
       <div className="mx-auto flex h-full max-w-2xl flex-col items-center justify-center gap-20">
@@ -17,9 +18,9 @@ const SignInPage = () => {
         >
           <ChevronLeft className="h-4 w-4" />
         </Link>
-        <SignIn />
+        <SignUp />
       </div>
     </div>
   );
 };
-export default SignInPage;
+export default SignUpPage;

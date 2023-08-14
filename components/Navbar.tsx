@@ -3,6 +3,7 @@ import { FC } from "react";
 import { Icons } from "./Icons";
 import { buttonVariants } from "./ui/Button";
 import { getAuthSession } from "@/lib/auth";
+import UserMenu from "./UserMenu";
 
 interface NavbarProps {}
 
@@ -21,8 +22,8 @@ const Navbar: FC<NavbarProps> = async ({}) => {
 
         {/* Search bar will go here */}
 
-        {session ? (
-          <div>Logged in as {session.user?.name}</div>
+        {session?.user ? (
+          <UserMenu user={session.user} />
         ) : (
           <Link href="/sign-in" className={buttonVariants()}>
             Sign In

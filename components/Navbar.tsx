@@ -15,8 +15,8 @@ const Navbar: FC<NavbarProps> = async ({}) => {
       <div className="container mx-auto flex h-full max-w-7xl items-center justify-between gap-2">
         <Link href="/" className="flex items-center gap-2 ">
           <Icons.logo className="h-10 w-10 sm:h-8 sm:w-8" />
-          <p className="font-pacifico hidden text-2xl font-medium text-zinc-700 md:block">
-            PixelLand
+          <p className="font-kalam hidden text-2xl font-medium text-zinc-700 md:block">
+            PlayedIt
           </p>
         </Link>
 

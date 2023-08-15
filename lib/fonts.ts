@@ -1,9 +1,9 @@
-import { Comfortaa, Pacifico } from "next/font/google";
+import { Comfortaa, Kalam } from "next/font/google";
 
-export const pacifico = Pacifico({
+export const kalam = Kalam({
   subsets: ["latin"],
   weight: "400",
-  variable: "--font-pacifico",
+  variable: "--font-kalam",
 });
 
 export const comfortaa = Comfortaa({

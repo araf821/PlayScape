@@ -20,7 +20,7 @@ const SignIn: FC<SignInProps> = ({}) => {
         <UserAuthForm />
 
         <p className="px-8 text-center text-sm text-zinc-600">
-          New to PixelLand?{" "}
+          New to PlayedIt?{" "}
           <Link
             href="/sign-up"
             className="text-sm underline underline-offset-4 transition duration-200 hover:text-zinc-900"

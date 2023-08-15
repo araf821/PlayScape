@@ -1,11 +1,11 @@
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/Toaster";
-import { comfortaa, pacifico } from "@/lib/fonts";
+import { comfortaa, kalam } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 
 export const metadata = {
-  title: "PixelLand",
+  title: "PlayedIt",
   description: "A Reddit clone, but better.",
 };
 
@@ -23,7 +23,7 @@ export default function RootLayout({
         "antialias light bg-white text-slate-900",
         comfortaa.className,
         comfortaa.variable,
-        pacifico.variable,
+        kalam.variable,
       )}
     >
       <body className="min-h-screen bg-slate-50 pt-12 antialiased">

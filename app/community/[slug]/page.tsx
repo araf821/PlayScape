@@ -1,3 +1,4 @@
+import MiniCreatePost from "@/components/MiniCreatePost";
 import { PAGINATION_RESULTS } from "@/config";
 import { getAuthSession } from "@/lib/auth";
 import db from "@/lib/db";
@@ -45,6 +46,10 @@ const CommunityPage: FC<CommunityPageProps> = async ({
       <h1 className="flex h-14 items-center gap-2 text-3xl font-semibold md:text-4xl">
         <Castle className="h-8 w-8 md:h-10 md:w-10" /> {community.name}
       </h1>
+
+      <MiniCreatePost session={session} />
+
+      {/* TODO: Show posts in user's feed */}
     </div>
   );
 };

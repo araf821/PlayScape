@@ -95,7 +95,10 @@ const Layout = async ({
               ) : null}
 
               {community.creatorId !== session?.user.id ? (
-                <JoinLeaveToggle communityId={community.id} />
+                <JoinLeaveToggle
+                  communityId={community.id}
+                  hasJoined={isUserAMember}
+                />
               ) : null}
             </dl>
           </div>

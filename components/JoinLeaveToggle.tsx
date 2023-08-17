@@ -1,19 +1,27 @@
 "use client";
 
-import { FC } from "react";
+import { FC, startTransition } from "react";
 import { Button } from "./ui/Button";
 import { useMutation } from "@tanstack/react-query";
 import { JoinCommunityPayload } from "@/lib/validators/community";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { useCustomToast } from "@/hooks/use-custom-toast";
+import { toast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 interface JoinLeaveToggleProps {
   communityId: string;
+  hasJoined: boolean;
 }
 
-const JoinLeaveToggle: FC<JoinLeaveToggleProps> = ({ communityId }) => {
-  const isSubscribed = true;
+const JoinLeaveToggle: FC<JoinLeaveToggleProps> = ({
+  communityId,
+  hasJoined,
+}) => {
+  const { loginToast } = useCustomToast();
+  const router = useRouter();
 
-  const {} = useMutation({
+  const { mutate: join, isLoading: isJoining } = useMutation({
     mutationFn: async () => {
       const payload: JoinCommunityPayload = {
         communityId: communityId,
@@ -22,12 +30,42 @@ const JoinLeaveToggle: FC<JoinLeaveToggleProps> = ({ communityId }) => {
       const { data } = await axios.post("/api/community/join", payload);
       return data as string;
     },
+    onError: (err) => {
+      if (err instanceof AxiosError) {
+        if (err.status === 401) {
+          return loginToast();
+        }
+      }
+
+      return toast({
+        title: "There was an error.",
+        description: "Something went wrong, please try again later.",
+        variant: "destructive",
+      });
+    },
+    onSuccess: () => {
+      startTransition(() => {
+        router.refresh();
+      });
+
+      return toast({
+        title: "Successful!",
+        description: "You are now a member of this community!",
+        variant: "default",
+      });
+    },
   });
 
-  return isSubscribed ? (
+  return hasJoined ? (
     <Button className="mb-4 mt-1 w-full">Leave community</Button>
   ) : (
-    <Button className="mb-4 mt-1 w-full">Join to post</Button>
+    <Button
+      onClick={() => join()}
+      isLoading={isJoining}
+      className="mb-4 mt-1 w-full"
+    >
+      Join to post
+    </Button>
   );
 };
 

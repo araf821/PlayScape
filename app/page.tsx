@@ -27,7 +27,7 @@ export default function Home() {
             </div>
 
             <Link
-              href="/create"
+              href="/community/create"
               className={buttonVariants({ className: "mb-6 mt-4 w-full" })}
             >
               Create Community

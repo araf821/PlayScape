@@ -40,7 +40,7 @@ export async function POST(req: Request) {
       },
     });
 
-    return new Response("Created new community - " + community.name + ".");
+    return new Response(community.name);
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response(error.message, { status: 422 });

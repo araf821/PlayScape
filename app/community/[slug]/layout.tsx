@@ -3,6 +3,8 @@ import db from "@/lib/db";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import JoinLeaveToggle from "@/components/JoinLeaveToggle";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/Button";
 
 const Layout = async ({
   children,
@@ -100,6 +102,16 @@ const Layout = async ({
                   hasJoined={isUserAMember}
                 />
               ) : null}
+
+              <Link
+                className={buttonVariants({
+                  variant: "outline",
+                  className: "mb-6 w-full",
+                })}
+                href={`/community/${slug}/submit`}
+              >
+                Create Post
+              </Link>
             </dl>
           </div>
         </div>

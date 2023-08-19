@@ -9,7 +9,7 @@ import type EditorJS from "@editorjs/editorjs";
 import { uploadFiles } from "@/lib/uploadthing";
 import { toast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { usePathname, useRouter } from "next/navigation";
 
 interface EditorProps {
@@ -153,7 +153,15 @@ const Editor: FC<EditorProps> = ({ communityId }) => {
 
       return data;
     },
-    onError: () => {
+    onError: (err) => {
+      if (err instanceof AxiosError) {
+        return toast({
+          title: "You're not a member.",
+          description: "You must be a member of this community in order to create a post.",
+          variant: "destructive",
+        });
+      }
+
       return toast({
         title: "Something went wrong.",
         description: "Your post was not published, please try again later.",

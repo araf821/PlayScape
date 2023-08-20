@@ -1,4 +1,5 @@
 import MiniCreatePost from "@/components/MiniCreatePost";
+import PostFeed from "@/components/PostFeed";
 import { PAGINATION_RESULTS } from "@/config";
 import { getAuthSession } from "@/lib/auth";
 import db from "@/lib/db";
@@ -48,8 +49,7 @@ const CommunityPage: FC<CommunityPageProps> = async ({
       </h1>
 
       <MiniCreatePost session={session} />
-
-      {/* TODO: Show posts in user's feed */}
+      <PostFeed initialPosts={community.posts} communityName={community.name} />
     </div>
   );
 };

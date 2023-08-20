@@ -5,6 +5,9 @@ import { Post, PostVote, User } from "@prisma/client";
 import { MessageSquare } from "lucide-react";
 import { FC, useRef } from "react";
 import EditorOutput from "./EditorOutput";
+import PostVoteClient from "./post-vote/PostVoteClient";
+
+type PartialVote = Pick<PostVote, "type">;
 
 interface PostProps {
   communityName: string;
@@ -13,15 +16,29 @@ interface PostProps {
     votes: PostVote[];
   };
   numOfComments: number;
+  votesAmt: number;
+  currentVote?: PartialVote;
 }
 
-const Post: FC<PostProps> = ({ communityName, post, numOfComments }) => {
+const Post: FC<PostProps> = ({
+  communityName,
+  post,
+  numOfComments,
+  votesAmt,
+  currentVote,
+}) => {
   const postRef = useRef<HTMLDivElement>(null);
-  console.log(postRef.current?.clientHeight);
+  console.log(votesAmt);
 
   return (
     <div className="rounded-md bg-white shadow">
       <div className="flex justify-between px-6 py-4">
+        <PostVoteClient
+          postId={post.id}
+          initialVote={currentVote?.type}
+          initialVotesAmount={votesAmt}
+        />
+
         <div className="w-0 flex-1">
           <div className="mt-1 max-h-40 text-xs text-gray-500">
             {communityName ? (

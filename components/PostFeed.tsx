@@ -1,7 +1,7 @@
 "use client";
 
 import { ExtendedPost } from "@/types/db";
-import { FC, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import { useIntersection } from "@mantine/hooks";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { PAGINATION_RESULTS } from "@/config";
@@ -28,7 +28,7 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, communityName }) => {
     ["infinite-query"],
     async ({ pageParam = 1 }) => {
       const query =
-        `/api/posts?limit=${PAGINATION_RESULTS}%page=${pageParam}` +
+        `/api/posts?limit=${PAGINATION_RESULTS}&page=${pageParam}` +
         (!!communityName ? `&communityName=${communityName}` : "");
 
       const { data } = await axios.get(query);
@@ -42,6 +42,12 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, communityName }) => {
       initialData: { pages: [initialPosts], pageParams: [1] },
     },
   );
+
+  useEffect(() => {
+    if (entry?.isIntersecting) {
+      fetchNextPage();
+    }
+  }, [entry, fetchNextPage]);
 
   const posts = data?.pages.flatMap((page) => page) ?? initialPosts;
 

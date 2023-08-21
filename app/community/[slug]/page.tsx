@@ -32,6 +32,9 @@ const CommunityPage: FC<CommunityPageProps> = async ({
           comments: true,
           community: true,
         },
+        orderBy: {
+          createdAt: "desc",
+        },
 
         take: PAGINATION_RESULTS,
       },

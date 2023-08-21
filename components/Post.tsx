@@ -28,7 +28,6 @@ const Post: FC<PostProps> = ({
   currentVote,
 }) => {
   const postRef = useRef<HTMLDivElement>(null);
-  console.log(votesAmt);
 
   return (
     <div className="rounded-md bg-white shadow">

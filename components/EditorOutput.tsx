@@ -1,3 +1,5 @@
+"use client";
+
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { FC } from "react";
@@ -13,6 +15,7 @@ interface EditorOutputProps {
 
 const style = {
   paragraph: {
+    overflowWrap: "break-word",
     fontSize: "0.875rem",
     lineHeight: "1.25rem",
   },

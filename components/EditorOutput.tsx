@@ -15,7 +15,6 @@ interface EditorOutputProps {
 
 const style = {
   paragraph: {
-    overflowWrap: "break-word",
     fontSize: "0.875rem",
     lineHeight: "1.25rem",
   },
@@ -28,12 +27,14 @@ const renderers = {
 
 const EditorOutput: FC<EditorOutputProps> = ({ content }) => {
   return (
-    <Output
-      data={content}
-      style={style}
-      className="text-sm"
-      renderers={renderers}
-    />
+    <div className="break-words">
+      <Output
+        data={content}
+        style={style}
+        className="text-sm"
+        renderers={renderers}
+      />
+    </div>
   );
 };
 
@@ -49,8 +50,8 @@ function CustomImageRenderer({ data }: any) {
 
 function CustomCodeRenderer({ data }: any) {
   return (
-    <pre className="rounded-md bg-gray-800 p-4">
-      <code className="text-sm text-gray-100">{data.code}</code>
+    <pre className="overflow-x-auto rounded-md bg-gray-800 p-4">
+      <code className="text-gray-100">{data.code}</code>
     </pre>
   );
 }

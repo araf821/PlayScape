@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback, useRef, useState } from "react";
 import {
   Command,
   CommandEmpty,
@@ -15,6 +15,7 @@ import { CommandList } from "cmdk";
 import { useRouter } from "next/navigation";
 import { Users } from "lucide-react";
 import debounce from "lodash.debounce";
+import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 
 interface SearchBarProps {}
 
@@ -28,7 +29,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
 
   const debounceRequest = useCallback(() => {
     request();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {
@@ -49,8 +50,17 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
     enabled: false,
   });
 
+  const commandRef = useRef<HTMLDivElement>(null);
+
+  useOnClickOutside(commandRef, () => {
+    setInput("");
+  });
+
   return (
-    <Command className="border- relative z-50 max-w-lg overflow-visible rounded-lg">
+    <Command
+      ref={commandRef}
+      className="border- relative z-50 max-w-lg overflow-visible rounded-lg"
+    >
       <CommandInput
         value={input}
         onValueChange={(text) => {

@@ -62,6 +62,39 @@ const CommentSection = async ({ postId }: CommentSectionProps) => {
                     comment={topLevelComment}
                   />
                 </div>
+
+                {/* Replies */}
+                {topLevelComment.replies
+                  .sort((a, b) => b.votes.length - a.votes.length)
+                  .map((reply) => {
+                    const replyVotesAmount = topLevelComment.votes.reduce(
+                      (acc, vote) => {
+                        if (vote.type === "UP") return acc + 1;
+                        if (vote.type === "DOWN") return acc - 1;
+                        return acc;
+                      },
+                      0,
+                    );
+
+                    // Check if this particular comment has been upvoted by the current user already.
+                    const replyVote = topLevelComment.votes.find(
+                      (vote) => vote.userId === session?.user.id,
+                    );
+
+                    return (
+                      <div
+                        key={reply.id}
+                        className="ml-2 border-l-2 border-zinc-200 py-2 pl-4"
+                      >
+                        <PostComment
+                          comment={reply}
+                          currentVote={replyVote}
+                          postId={postId}
+                          votesAmt={replyVotesAmount}
+                        />
+                      </div>
+                    );
+                  })}
               </div>
             );
           })}

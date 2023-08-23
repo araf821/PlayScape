@@ -14,6 +14,7 @@ import { Textarea } from "./ui/Textarea";
 import { useMutation } from "@tanstack/react-query";
 import { CommentRequest } from "@/lib/validators/comment";
 import axios from "axios";
+import { toast } from "@/hooks/use-toast";
 
 type ExtendedComment = Comment & {
   votes: CommentVote[];
@@ -47,8 +48,23 @@ const PostComment: FC<PostCommentProps> = ({
         replyToId,
       };
 
-      const { data } = await axios.patch("/api/community/post/comment");
+      const { data } = await axios.patch(
+        "/api/community/post/comment",
+        payload,
+      );
       return data;
+    },
+    onError: () => {
+      return toast({
+        title: "Something went wrong.",
+        description:
+          "Comment could not be processed at this time, please try again later.",
+        variant: "destructive",
+      });
+    },
+    onSuccess: () => {
+      router.refresh();
+      setIsReplying(false);
     },
   });
 
@@ -95,7 +111,7 @@ const PostComment: FC<PostCommentProps> = ({
         </Button>
 
         {isReplying ? (
-          <div className="ml-8 grid w-full gap-1.5">
+          <div className="ml-2 grid w-full gap-1.5">
             <Label htmlFor="comment">
               Reply to u/{comment.author.username}
             </Label>
@@ -108,7 +124,7 @@ const PostComment: FC<PostCommentProps> = ({
                 placeholder="What are your thoughts?"
               />
 
-              <div className="mt-2 flex justify-end">
+              <div className="mt-2 flex justify-end gap-2">
                 <Button
                   tabIndex={-1}
                   variant="subtle"

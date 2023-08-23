@@ -45,17 +45,18 @@ export async function PATCH(req: Request) {
             type: voteType,
           },
         });
+        return new Response("OK");
       }
-    } else {
-      await db.commentVote.create({
-        data: {
-          type: voteType,
-          userId: session.user.id,
-          commentId,
-        },
-      });
     }
-    
+
+    await db.commentVote.create({
+      data: {
+        type: voteType,
+        userId: session.user.id,
+        commentId,
+      },
+    });
+
     return new Response("Vote registered!", { status: 200 });
   } catch (error) {
     if (error instanceof z.ZodError) {

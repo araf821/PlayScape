@@ -4,6 +4,7 @@ import { Icons } from "./Icons";
 import { buttonVariants } from "./ui/Button";
 import { getAuthSession } from "@/lib/auth";
 import UserMenu from "./UserMenu";
+import SearchBar from "./SearchBar";
 
 interface NavbarProps {}
 
@@ -20,7 +21,7 @@ const Navbar: FC<NavbarProps> = async ({}) => {
           </p>
         </Link>
 
-        {/* Search bar will go here */}
+        <SearchBar />
 
         {session?.user ? (
           <UserMenu user={session.user} />

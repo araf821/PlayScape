@@ -16,12 +16,14 @@ interface PostVoteClientProps {
   postId: string;
   initialVotesAmount: number;
   initialVote?: VoteType | null;
+  className?: string;
 }
 
 const PostVoteClient: FC<PostVoteClientProps> = ({
   postId,
   initialVotesAmount,
   initialVote,
+  className,
 }) => {
   const { loginToast } = useCustomToast();
   const [numOfVotes, setNumOfVotes] = useState<number>(initialVotesAmount);
@@ -78,7 +80,7 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
   });
 
   return (
-    <div className="flex gap-4 pb-4 pr-6 sm:w-20 sm:flex-col sm:gap-0 sm:pb-0">
+    <div className={cn("", className)}>
       <Button
         disabled={isLoading}
         onClick={() => vote("UP")}

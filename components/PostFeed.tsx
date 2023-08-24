@@ -52,7 +52,7 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, communityName }) => {
   const posts = data?.pages.flatMap((page) => page) ?? initialPosts;
 
   return (
-    <ul className="col-span-2 flex flex-col space-y-6">
+    <ul className="col-span-2 flex flex-col mt-6 space-y-6">
       {posts.map((post, index) => {
         const amountOfVotes = post.votes.reduce((acc, vote) => {
           if (vote.type === "UP") return acc + 1;

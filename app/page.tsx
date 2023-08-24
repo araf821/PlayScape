@@ -18,7 +18,7 @@ export default async function Home() {
         <div className="order-first h-fit overflow-hidden rounded-lg border border-gray-200 md:order-last">
           <div className="bg-emerald-100 px-6 py-4">
             <p className="flex items-center gap-1.5 py-3 font-semibold">
-              <HomeIcon className="h-4 w-4" />
+              <HomeIcon className="h-4 -translate-y-0.5 w-4" />
               Home
             </p>
           </div>

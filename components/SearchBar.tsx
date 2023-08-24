@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { Users } from "lucide-react";
 import debounce from "lodash.debounce";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
+import Link from "next/link";
 
 interface SearchBarProps {}
 
@@ -25,7 +26,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
 
   const request = debounce(() => {
     refetch();
-  }, 500);
+  }, 300);
 
   const debounceRequest = useCallback(() => {
     request();
@@ -88,9 +89,9 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
                   }}
                 >
                   <Users className="mr-2 h-4 w-4" />
-                  <a href={`/community/${community.name}`}>
+                  <Link href={`/community/${community.name}`}>
                     community/{community.name}
-                  </a>
+                  </Link>
                 </CommandItem>
               ))}
             </CommandGroup>

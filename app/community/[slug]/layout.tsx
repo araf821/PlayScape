@@ -20,6 +20,11 @@ const Layout = async ({
       name: slug,
     },
     include: {
+      Creator: {
+        select: {
+          username: true,
+        },
+      },
       posts: {
         include: {
           author: true,
@@ -60,6 +65,12 @@ const Layout = async ({
     },
   });
 
+  const postCount = await db.post.count({
+    where: {
+      communityId: community.id,
+    },
+  });
+
   return (
     <div className="mx-auto h-full max-w-7xl pt-12 sm:container">
       <div className="">
@@ -68,7 +79,7 @@ const Layout = async ({
           <div className="col-span-2 flex flex-col space-y-6">{children}</div>
 
           {/* Community info sidebar */}
-          <div className="order-first hidden h-fit overflow-hidden rounded-lg border border-gray-200 md:order-last md:block">
+          <div className="sticky top-[8dvh] order-first hidden h-fit overflow-hidden rounded-lg border border-gray-200 md:order-last md:block">
             <div className="px-6 py-4">
               <p className="font-semibold">About {community.name}</p>
             </div>
@@ -90,9 +101,25 @@ const Layout = async ({
                 </dd>
               </div>
 
+              <div className="flex justify-between gap-x-4 py-3">
+                <dt className="text-gray-500">Posts</dt>
+                <dd className="text-gray-700">
+                  <div className="text-gray-900">{postCount}</div>
+                </dd>
+              </div>
+
+              <div className="flex justify-between gap-x-4 py-3">
+                <dt className="text-gray-500">Creator</dt>
+                <dd className="text-gray-700">
+                  <div className="text-gray-900">
+                    u/{community.Creator.username}
+                  </div>
+                </dd>
+              </div>
+
               {community.creatorId === session?.user.id ? (
                 <div className="flex justify-between gap-x-4 py-3">
-                  <p className="text-gray-500">You created this community.</p>
+                  <p className="text-gray-800 font-bold">You created this community.</p>
                 </div>
               ) : null}
 

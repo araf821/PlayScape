@@ -9,6 +9,7 @@ interface PostVoteServerProps {
   initialVotesAmount?: number;
   initialVoteType?: VoteType;
   getData?: () => Promise<(Post & { votes: PostVote[] }) | null>;
+  className?: string;
 }
 
 const PostVoteServer: FC<PostVoteServerProps> = async ({
@@ -16,6 +17,7 @@ const PostVoteServer: FC<PostVoteServerProps> = async ({
   initialVoteType,
   initialVotesAmount,
   getData,
+  className
 }) => {
   const session = await getAuthSession();
 
@@ -47,6 +49,7 @@ const PostVoteServer: FC<PostVoteServerProps> = async ({
       initialVotesAmount={_numOfVotes}
       initialVote={_currentVoteType}
       postId={postId}
+      className={className}
     />
   );
 };

@@ -111,7 +111,6 @@ model Comment {
   replies   Comment[] @relation("ReplyTo")
 
   votes     CommentVote[]
-  commentId String?
 }
 
 enum VoteType {

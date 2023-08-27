@@ -31,7 +31,7 @@ const Post: FC<PostProps> = ({
   const postRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="rounded-md bg-white shadow">
+    <div className="rounded-md bg-white shadow-md">
       <div className="flex px-6 py-4">
         <div className="w-full flex-1 sm:w-0">
           <div className="mt-1 flex max-h-56 w-full flex-col text-xs text-gray-500 sm:flex-row sm:items-center">

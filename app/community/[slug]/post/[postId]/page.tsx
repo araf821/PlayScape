@@ -7,7 +7,7 @@ import { redis } from "@/lib/redis";
 import { formatTimeToNow } from "@/lib/utils";
 import { CachedPost } from "@/types/redis";
 import { Post, PostVote, User } from "@prisma/client";
-import { ArrowBigDown, ArrowBigUp, Loader2 } from "lucide-react";
+import { Frown, Loader2, Smile } from "lucide-react";
 import { notFound } from "next/navigation";
 import { FC, Suspense } from "react";
 
@@ -59,6 +59,7 @@ const page: FC<pageProps> = async ({ params }: pageProps) => {
                 },
               });
             }}
+            className="hidden sm:block"
           />
         </Suspense>
 
@@ -73,6 +74,23 @@ const page: FC<pageProps> = async ({ params }: pageProps) => {
           </h1>
 
           <EditorOutput content={post?.content ?? cachedPost.content} />
+
+          <Suspense fallback={<PostVoteLoader />}>
+            <PostVoteServer
+              postId={post?.id ?? cachedPost.id}
+              getData={async () => {
+                return await db.post.findUnique({
+                  where: {
+                    id: params.postId,
+                  },
+                  include: {
+                    votes: true,
+                  },
+                });
+              }}
+              className="flex gap-2 mt-4 sm:hidden"
+            />
+          </Suspense>
 
           <Suspense
             fallback={
@@ -92,7 +110,7 @@ function PostVoteLoader() {
     <div className="flex w-20 flex-col items-center pr-6">
       {/* upvote btn */}
       <div className={buttonVariants({ variant: "ghost" })}>
-        <ArrowBigUp className="h-5 w-5 text-zinc-700" />
+        <Smile className="h-5 w-5 text-zinc-700" />
       </div>
 
       {/* display of votes */}
@@ -102,7 +120,7 @@ function PostVoteLoader() {
 
       {/* downvote btn */}
       <div className={buttonVariants({ variant: "ghost" })}>
-        <ArrowBigDown className="h-5 w-5 text-zinc-700" />
+        <Frown className="h-5 w-5 text-zinc-700" />
       </div>
     </div>
   );

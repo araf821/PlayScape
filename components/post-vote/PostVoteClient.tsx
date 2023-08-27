@@ -5,7 +5,7 @@ import { usePrevious } from "@mantine/hooks";
 import { VoteType } from "@prisma/client";
 import { FC, useEffect, useState } from "react";
 import { Button } from "../ui/Button";
-import { ArrowBigDown, ArrowBigUp } from "lucide-react";
+import { Frown, Smile } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useMutation } from "@tanstack/react-query";
 import { PostVoteRequest } from "@/lib/validators/vote";
@@ -88,9 +88,9 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
         variant="ghost"
         aria-label="upvote"
       >
-        <ArrowBigUp
+        <Smile
           className={cn("h-5 w-5 text-zinc-700", {
-            "fill-emerald-500 text-emerald-500": currentVote === "UP",
+            "text-emerald-500": currentVote === "UP",
           })}
         />
       </Button>
@@ -106,9 +106,9 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
         variant="ghost"
         aria-label="upvote"
       >
-        <ArrowBigDown
+        <Frown
           className={cn("h-5 w-5 text-zinc-700", {
-            "fill-red-500 text-red-500": currentVote === "DOWN",
+            "text-red-500": currentVote === "DOWN",
           })}
         />
       </Button>

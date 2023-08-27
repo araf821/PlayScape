@@ -4,7 +4,7 @@ import { useCustomToast } from "@/hooks/use-custom-toast";
 import { usePrevious } from "@mantine/hooks";
 import { CommentVote, VoteType } from "@prisma/client";
 import { FC, useState } from "react";
-import { ArrowBigDown, ArrowBigUp } from "lucide-react";
+import { Frown, Smile } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useMutation } from "@tanstack/react-query";
 import { CommentVoteRequest } from "@/lib/validators/vote";
@@ -82,9 +82,9 @@ const CommentVotes: FC<CommentVotesProps> = ({
         variant="ghost"
         aria-label="upvote"
       >
-        <ArrowBigUp
+        <Smile
           className={cn("h-5 w-5 text-zinc-700", {
-            "fill-emerald-500 text-emerald-500": currentVote?.type === "UP",
+            "text-emerald-500": currentVote?.type === "UP",
           })}
         />
       </Button>
@@ -100,9 +100,9 @@ const CommentVotes: FC<CommentVotesProps> = ({
         variant="ghost"
         aria-label="upvote"
       >
-        <ArrowBigDown
+        <Frown
           className={cn("h-5 w-5 text-zinc-700", {
-            "fill-red-500 text-red-500": currentVote?.type === "DOWN",
+            "text-red-500": currentVote?.type === "DOWN",
           })}
         />
       </Button>

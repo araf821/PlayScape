@@ -17,7 +17,7 @@ const Navbar: FC<NavbarProps> = async ({}) => {
         <Link href="/" className="flex items-center gap-2 ">
           <Icons.logo className="h-10 w-10 sm:h-8 sm:w-8" />
           <p className="hidden translate-y-1 font-kalam text-2xl font-bold text-zinc-700 md:block">
-            PlayedIt
+            PlayScape
           </p>
         </Link>
 

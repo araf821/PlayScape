@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 
 export const metadata = {
-  title: "PlayedIt",
+  title: "PlayScape",
   description: "A Reddit clone, but better.",
 };
 

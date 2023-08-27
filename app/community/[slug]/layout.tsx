@@ -112,7 +112,7 @@ const Layout = async ({
                 <dt className="text-gray-500">Creator</dt>
                 <dd className="text-gray-700">
                   <div className="text-gray-900">
-                    u/{community.Creator.username}
+                    u/{community.Creator.username ?? "deleted"}
                   </div>
                 </dd>
               </div>
@@ -133,7 +133,7 @@ const Layout = async ({
               <Link
                 className={buttonVariants({
                   variant: "outline",
-                  className: "mb-6 w-full",
+                  className: "mb-4 w-full",
                 })}
                 href={`/community/${slug}/submit`}
               >

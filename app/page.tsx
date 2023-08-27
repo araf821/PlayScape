@@ -1,6 +1,6 @@
-import CustomFeed from "@/components/CustomFeed";
-import GeneralFeed from "@/components/GeneralFeed";
 import UserCommunities from "@/components/UserCommunities";
+import CustomFeed from "@/components/post/CustomFeed";
+import GeneralFeed from "@/components/post/GeneralFeed";
 import { buttonVariants } from "@/components/ui/Button";
 import { getAuthSession } from "@/lib/auth";
 import { HomeIcon } from "lucide-react";
@@ -27,7 +27,7 @@ export default async function Home() {
 
           <div className="-my-3 divide-y divide-gray-100 px-4 py-4 text-sm leading-6 ">
             <div className="flex justify-between gap-x-4 py-3">
-              <p className="text-zinc-500">
+              <p className="text-zinc-700">
                 Your personal PlayScape homepage! Check in with your favourite
                 communities.
               </p>

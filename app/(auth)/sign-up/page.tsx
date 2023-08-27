@@ -1,8 +1,6 @@
-import SignIn from "@/components/SignIn";
 import SignUp from "@/components/SignUp";
 import { buttonVariants } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
 const SignUpPage = () => {
@@ -12,11 +10,11 @@ const SignUpPage = () => {
         <Link
           href="/"
           className={cn(
-            buttonVariants({ variant: "ghost" }),
+            buttonVariants({ variant: "subtle" }),
             "-mt-20 self-start",
           )}
         >
-          <ChevronLeft className="h-4 w-4" />
+          Back
         </Link>
         <SignUp />
       </div>

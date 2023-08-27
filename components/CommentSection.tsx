@@ -1,7 +1,7 @@
 import { getAuthSession } from "@/lib/auth";
 import db from "@/lib/db";
 import { FC } from "react";
-import PostComment from "./PostComment";
+import PostComment from "./post/PostComment";
 import CreateComment from "./CreateComment";
 
 interface CommentSectionProps {

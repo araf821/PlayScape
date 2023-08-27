@@ -8,12 +8,14 @@ interface SignInProps {}
 const SignIn: FC<SignInProps> = ({}) => {
   return (
     <div className="container mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px]">
-      <div className="flex flex-col space-y-2 text-center">
+      <div className="flex flex-col space-y-4 text-center">
         <Icons.logo className="mx-auto h-6 w-6" />
         <h1 className="text-2xl font-semibold tracking-tight">Welcome Back</h1>
         <p className="mx-auto max-w-xs text-sm">
-          By continuing, you are agreeing to our User Agreement and Privacy
-          Policy.
+          By continuing, you are agreeing to our{" "}
+          <Link className="underline" href={"/privacy-policy"}>
+            User Agreement and Privacy Policy.
+          </Link>
         </p>
 
         {/* Sign in form */}

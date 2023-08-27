@@ -5,7 +5,7 @@ import { Post, PostVote, User } from "@prisma/client";
 import { MessageSquare } from "lucide-react";
 import { FC, useRef } from "react";
 import EditorOutput from "./EditorOutput";
-import PostVoteClient from "./post-vote/PostVoteClient";
+import PostVoteClient from "../post-vote/PostVoteClient";
 import Link from "next/link";
 
 type PartialVote = Pick<PostVote, "type">;
@@ -54,7 +54,7 @@ const Post: FC<PostProps> = ({
             </div>
           </div>
 
-          <Link href={`/community/${communityName}/post/${post.id}`}>
+          <Link className="flex w-fit" href={`/community/${communityName}/post/${post.id}`}>
             <h1 className="py-2 text-xl md:text-2xl font-semibold leading-6 text-gray-900">
               {post.title}
             </h1>

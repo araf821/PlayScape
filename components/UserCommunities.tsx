@@ -1,7 +1,6 @@
 import { FC } from "react";
 import CommunityListItem from "./CommunityListItem";
 import db from "@/lib/db";
-import { wait } from "@/lib/wait";
 
 interface UserCommunitiesProps {
   userId: string | null;
@@ -10,7 +9,6 @@ interface UserCommunitiesProps {
 const UserCommunities: FC<UserCommunitiesProps> = async ({ userId }) => {
   if (!userId) return null;
 
-  //   await wait(5000);
   const communities = await db.community.findMany({
     where: {
       members: {
@@ -54,12 +52,12 @@ const UserCommunities: FC<UserCommunitiesProps> = async ({ userId }) => {
         </div>
       ) : null}
 
-      {communities.length ? (
+      {joinedCommunities.length ? (
         <div>
           <p className="">Communities you&rsquo;ve joined</p>
           <hr className="border-zinc-200" />
           <div className="mt-2 flex flex-col gap-2">
-            {communities.map((community) => (
+            {joinedCommunities.map((community) => (
               <CommunityListItem
                 key={community.id}
                 communityName={community.name}

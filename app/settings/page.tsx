@@ -19,17 +19,14 @@ const page: FC<pageProps> = async ({}) => {
 
   return (
     <div className="mx-auto max-w-4xl py-12">
-      <div className="grid items-start gap-8">
-        <h1 className="text-3xl font-bold md:text-4xl">Settings</h1>
-      </div>
-      <div className="grid gap-10">
-        <UsernameForm
-          user={{
-            id: session.user.id,
-            username: session.user.username || "",
-          }}
-        />
-      </div>
+      <h1 className="mb-4 text-3xl font-bold md:text-4xl">Settings</h1>
+      <UsernameForm
+        user={{
+          id: session.user.id,
+          username: session.user.username || "",
+          image: session.user.image || "",
+        }}
+      />
     </div>
   );
 };

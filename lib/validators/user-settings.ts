@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const UsernameValidator = z.object({
+export const UserSettingsValidator = z.object({
   name: z
     .string()
     .min(3, { message: "Username must be 3-21 characters long." })
@@ -9,6 +9,7 @@ export const UsernameValidator = z.object({
       message:
         "Username can only contain characters a-z, A-Z, 0-9, and underscore.",
     }),
+  image: z.string(),
 });
 
-export type UsernameRequest = z.infer<typeof UsernameValidator>;
+export type UserSettingsRequest = z.infer<typeof UserSettingsValidator>;

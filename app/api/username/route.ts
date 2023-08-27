@@ -1,6 +1,6 @@
 import { getAuthSession } from "@/lib/auth";
 import db from "@/lib/db";
-import { UsernameValidator } from "@/lib/validators/username";
+import { UserSettingsValidator } from "@/lib/validators/user-settings";
 import { z } from "zod";
 
 export async function PATCH(req: Request) {
@@ -13,7 +13,7 @@ export async function PATCH(req: Request) {
 
     const body = await req.json();
 
-    const { name } = UsernameValidator.parse(body);
+    const { name, image } = UserSettingsValidator.parse(body);
 
     const username = await db.user.findFirst({
       where: {
@@ -31,6 +31,7 @@ export async function PATCH(req: Request) {
       },
       data: {
         username: name,
+        image: image,
       },
     });
 

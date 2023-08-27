@@ -1,6 +1,9 @@
 "use client";
 
-import { UsernameRequest, UsernameValidator } from "@/lib/validators/username";
+import {
+  UserSettingsRequest,
+  UserSettingsValidator,
+} from "@/lib/validators/user-settings";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { User } from "@prisma/client";
 import { FC } from "react";
@@ -20,9 +23,10 @@ import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface UsernameFormProps {
-  user: Pick<User, "id" | "username">;
+  user: Pick<User, "id" | "username" | "image">;
 }
 
 const UsernameForm: FC<UsernameFormProps> = ({ user }) => {
@@ -30,18 +34,20 @@ const UsernameForm: FC<UsernameFormProps> = ({ user }) => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<UsernameRequest>({
-    resolver: zodResolver(UsernameValidator),
+  } = useForm<UserSettingsRequest>({
+    resolver: zodResolver(UserSettingsValidator),
     defaultValues: {
       name: user?.username || "",
+      image: user?.image || "",
     },
   });
   const router = useRouter();
 
   const { mutate: changeUsername, isLoading } = useMutation({
-    mutationFn: async ({ name }: UsernameRequest) => {
-      const payload: UsernameRequest = {
+    mutationFn: async ({ name, image }: UserSettingsRequest) => {
+      const payload: UserSettingsRequest = {
         name,
+        image,
       };
 
       const { data } = await axios.patch("/api/username", payload);
@@ -74,14 +80,28 @@ const UsernameForm: FC<UsernameFormProps> = ({ user }) => {
   });
 
   return (
-    <form onSubmit={handleSubmit((e) => changeUsername(e))}>
+    <form
+      className="shadow-sm"
+      onSubmit={handleSubmit((e) => changeUsername(e))}
+    >
       <Card>
-        <CardHeader>
-          <CardTitle>Your username</CardTitle>
-          <CardDescription>Please enter a display name.</CardDescription>
+        <CardHeader className="px-4 md:px-6">
+          <CardTitle>Profile Settings</CardTitle>
+          <CardDescription>
+            Change your profile picture or username.
+          </CardDescription>
         </CardHeader>
 
-        <CardContent>
+        <CardContent className="px-4 md:px-6">
+          <div className="relative mb-6 h-40 w-40 overflow-hidden rounded-lg">
+            <Image
+              src={user.image ?? ""}
+              alt="bebi"
+              fill
+              className="object-cover"
+            />
+          </div>
+
           <div className="relative grid gap-1">
             <div className="absolute left-0 top-0 grid h-10 w-8 place-items-center">
               <span className="text-sm text-zinc-400">u/</span>
@@ -93,7 +113,7 @@ const UsernameForm: FC<UsernameFormProps> = ({ user }) => {
               id="name"
               size={32}
               {...register("name")}
-              className="w-[400px] pl-6"
+              className="w-full max-w-[400px] pl-6 shadow"
             />
 
             {errors?.name && (
@@ -103,8 +123,13 @@ const UsernameForm: FC<UsernameFormProps> = ({ user }) => {
             )}
           </div>
         </CardContent>
-        <CardFooter>
-          <Button isLoading={isLoading}>Change username</Button>
+        <CardFooter className="space-x-2 px-4 md:px-6">
+          <Button type="button" variant="subtle" onClick={() => router.back()}>
+            Back
+          </Button>
+          <Button type="submit" isLoading={isLoading}>
+            Confirm changes
+          </Button>
         </CardFooter>
       </Card>
     </form>

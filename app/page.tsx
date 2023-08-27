@@ -1,11 +1,9 @@
-import CommunityListItem from "@/components/CommunityListItem";
 import CustomFeed from "@/components/CustomFeed";
 import GeneralFeed from "@/components/GeneralFeed";
 import UserCommunities from "@/components/UserCommunities";
-import { Button, buttonVariants } from "@/components/ui/Button";
+import { buttonVariants } from "@/components/ui/Button";
 import { getAuthSession } from "@/lib/auth";
-import db from "@/lib/db";
-import { HomeIcon, Loader2 } from "lucide-react";
+import { HomeIcon } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 

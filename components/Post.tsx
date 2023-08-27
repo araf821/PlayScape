@@ -31,10 +31,10 @@ const Post: FC<PostProps> = ({
   const postRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="rounded-md bg-white shadow-md">
-      <div className="flex px-6 py-4">
+    <div className="rounded-lg bg-white shadow-md">
+      <div className="flex px-4 md:px-6 py-4">
         <div className="w-full flex-1 sm:w-0">
-          <div className="mt-1 flex max-h-56 w-full flex-col text-xs text-gray-500 sm:flex-row sm:items-center">
+          <div className="mt-1 flex max-h-80 w-full flex-col text-xs text-gray-500 sm:flex-row sm:items-center">
             {communityName ? (
               <>
                 <a
@@ -62,7 +62,7 @@ const Post: FC<PostProps> = ({
 
           <div
             ref={postRef}
-            className="relative max-h-56 w-full overflow-clip text-sm"
+            className="relative max-h-80 w-full overflow-clip text-sm"
           >
             <EditorOutput content={post.content} />
 

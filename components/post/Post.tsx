@@ -37,12 +37,12 @@ const Post: FC<PostProps> = ({
           <div className="mt-1 flex max-h-80 w-full flex-col text-xs text-gray-500 sm:flex-row sm:items-center">
             {communityName ? (
               <>
-                <a
+                <Link
                   className="text-sm text-zinc-900 underline underline-offset-2"
                   href={`/community/${communityName}`}
                 >
                   community/{communityName}
-                </a>
+                </Link>
                 <span className="hidden px-1 sm:block">•</span>
               </>
             ) : null}

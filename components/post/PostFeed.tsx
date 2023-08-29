@@ -22,6 +22,7 @@ const DynamicPost = dynamic(async () => (await import("./Post")).default, {
 
 const PostFeed: FC<PostFeedProps> = ({ initialPosts, communityName }) => {
   const lastPostRef = useRef<HTMLElement>(null);
+  console.log(initialPosts);
 
   const { ref, entry } = useIntersection({
     root: lastPostRef.current,
@@ -97,7 +98,7 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, communityName }) => {
         );
       })}
 
-      {isFetchingNextPage ? (
+      {/* {isFetchingNextPage ? (
         <div>
           <Loader2 className="mx-auto animate-spin" size={60} />
         </div>
@@ -105,13 +106,17 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, communityName }) => {
         <p className="py-16 text-center">
           You&rsquo;ve reached the end of the feed. Please touch grass.
         </p>
+      ) : isFetched && posts.length === 0 ? (
+        <p className="py-16 text-center">
+          No posts to display.
+        </p>
       ) : (
         <>
           <PostSkeleton />
           <PostSkeleton />
           <PostSkeleton />
         </>
-      )}
+      )} */}
     </ul>
   );
 };

@@ -28,6 +28,7 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
 }
 
 model Session {
@@ -36,6 +37,8 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model User {
@@ -69,6 +72,7 @@ model Community {
   members Member[]
 
   @@index([name])
+  @@index([creatorId])
 }
 
 model Member {
@@ -78,6 +82,8 @@ model Member {
   communityId String
 
   @@id([userId, communityId])
+  @@index([userId])
+  @@index([communityId])
 }
 
 model Post {
@@ -95,6 +101,9 @@ model Post {
 
   comments Comment[]
   votes    PostVote[]
+
+  @@index([communityId])
+  @@index([authorId])
 }
 
 model Comment {
@@ -110,7 +119,11 @@ model Comment {
   replyTo   Comment?  @relation("ReplyTo", fields: [replyToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   replies   Comment[] @relation("ReplyTo")
 
-  votes     CommentVote[]
+  votes CommentVote[]
+
+  @@index([authorId])
+  @@index([postId])
+  @@index([replyToId])
 }
 
 enum VoteType {
@@ -127,6 +140,8 @@ model PostVote {
   type VoteType
 
   @@id([userId, postId])
+  @@index([userId])
+  @@index([postId])
 }
 
 model CommentVote {
@@ -137,4 +152,6 @@ model CommentVote {
   type      VoteType
 
   @@id([userId, commentId])
+  @@index([userId])
+  @@index([commentId])
 }

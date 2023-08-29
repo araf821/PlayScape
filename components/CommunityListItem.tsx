@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { FC } from "react";
 import { buttonVariants } from "./ui/Button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface CommunityListItemProps {
   communityName: string;

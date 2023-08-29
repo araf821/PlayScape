@@ -1,10 +1,12 @@
 import CommentSection from "@/components/CommentSection";
+import { CommentSectionLoader } from "@/components/Skeletons";
 import PostVoteServer from "@/components/post-vote/PostVoteServer";
 import EditorOutput from "@/components/post/EditorOutput";
 import { buttonVariants } from "@/components/ui/Button";
 import db from "@/lib/db";
 import { redis } from "@/lib/redis";
 import { formatTimeToNow } from "@/lib/utils";
+import { wait } from "@/lib/wait";
 import { CachedPost } from "@/types/redis";
 import { Post, PostVote, User } from "@prisma/client";
 import { Frown, Loader2, Smile } from "lucide-react";
@@ -75,22 +77,24 @@ const page: FC<pageProps> = async ({ params }: pageProps) => {
 
           <EditorOutput content={post?.content ?? cachedPost.content} />
 
-          <Suspense fallback={<PostVoteLoader />}>
-            <PostVoteServer
-              postId={post?.id ?? cachedPost.id}
-              getData={async () => {
-                return await db.post.findUnique({
-                  where: {
-                    id: params.postId,
-                  },
-                  include: {
-                    votes: true,
-                  },
-                });
-              }}
-              className="flex gap-2 mt-4 sm:hidden"
-            />
-          </Suspense>
+          <div className="block sm:hidden">
+            <Suspense fallback={<PostVoteLoader />}>
+              <PostVoteServer
+                postId={post?.id ?? cachedPost.id}
+                getData={async () => {
+                  return await db.post.findUnique({
+                    where: {
+                      id: params.postId,
+                    },
+                    include: {
+                      votes: true,
+                    },
+                  });
+                }}
+                className="mt-4 flex gap-2 sm:hidden"
+              />
+            </Suspense>
+          </div>
 
           <Suspense
             fallback={

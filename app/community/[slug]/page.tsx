@@ -3,7 +3,6 @@ import PostFeed from "@/components/post/PostFeed";
 import { PAGINATION_RESULTS } from "@/config";
 import { getAuthSession } from "@/lib/auth";
 import db from "@/lib/db";
-import { Flame, Swords } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { FC, Fragment } from "react";
@@ -58,11 +57,7 @@ const CommunityPage: FC<CommunityPageProps> = async ({
               className="rounded-full object-cover"
             />
           </div>
-        ) : (
-          <div className="relative h-10 w-10 rounded-full border-2 border-zinc-100">
-            <Swords className="absolute left-1.5 top-1.5" />
-          </div>
-        )}
+        ) : null}
         {community.name}
       </h1>
 

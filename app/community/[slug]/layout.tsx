@@ -79,47 +79,57 @@ const Layout = async ({
           <div className="col-span-2 flex flex-col space-y-6">{children}</div>
 
           {/* Community info sidebar */}
-          <div className="sticky top-[8dvh] order-first hidden h-fit overflow-hidden rounded-lg border border-gray-200 md:order-last md:block">
-            <div className="px-6 py-4">
-              <p className="font-semibold">About {community.name}</p>
+          <div className="sticky top-[8dvh] order-first hidden h-fit overflow-hidden rounded-lg border border-zinc-700 md:order-last md:block">
+            <div className="border-b border-zinc-700 bg-zinc-900 px-6 py-4 font-bold text-zinc-100">
+              <p className="font-semibold">About community/{community.name}</p>
             </div>
 
-            <dl className="divide-y divide-gray-100 bg-white px-6 py-4 text-sm leading-6">
+            <dl className="bg-zinc-900 px-6 py-4 text-sm leading-6">
               <div className="flex justify-between gap-x-4 py-3">
-                <dt className="text-gray-500">Created</dt>
-                <dd className="text-gray-700">
+                <dt className="text-zinc-300">Created</dt>
+                <dd className="text-zinc-100">
                   <time dateTime={community.createdAt.toDateString()}>
                     {format(community.createdAt, "MMMM dd, yyyy")}
                   </time>
                 </dd>
               </div>
 
-              <div className="flex justify-between gap-x-4 py-3">
-                <dt className="text-gray-500">Members</dt>
-                <dd className="text-gray-700">
-                  <div className="text-gray-900">{memberCount}</div>
-                </dd>
-              </div>
+              <hr className="border-zinc-700" />
 
               <div className="flex justify-between gap-x-4 py-3">
-                <dt className="text-gray-500">Posts</dt>
-                <dd className="text-gray-700">
-                  <div className="text-gray-900">{postCount}</div>
+                <dt className="text-zinc-300">Members</dt>
+                <dd className="text-zinc-100">
+                  <div className="">{memberCount}</div>
                 </dd>
               </div>
+              <hr className="border-zinc-700" />
 
               <div className="flex justify-between gap-x-4 py-3">
-                <dt className="text-gray-500">Creator</dt>
-                <dd className="text-gray-700">
-                  <div className="text-gray-900">
-                    u/{community.Creator.username ?? "deleted"}
+                <dt className="text-zinc-300">Posts</dt>
+                <dd className="text-zinc-100">
+                  <div className="">{postCount}</div>
+                </dd>
+              </div>
+              <hr className="border-zinc-700" />
+
+              <div className="flex justify-between gap-x-4 py-3">
+                <dt className="text-zinc-300">Creator</dt>
+                <dd className="text-zinc-100">
+                  <div className="">
+                    u/
+                    {community.Creator.username ?? (
+                      <span className="text-zinc-400">deletedUser</span>
+                    )}
                   </div>
                 </dd>
               </div>
+              <hr className="border-zinc-700" />
 
               {community.creatorId === session?.user.id ? (
                 <div className="flex justify-between gap-x-4 py-3">
-                  <p className="text-gray-800 font-bold">You created this community.</p>
+                  <p className="font-bold text-zinc-400">
+                    You created this community.
+                  </p>
                 </div>
               ) : null}
 

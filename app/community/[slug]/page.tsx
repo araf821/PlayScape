@@ -3,9 +3,10 @@ import PostFeed from "@/components/post/PostFeed";
 import { PAGINATION_RESULTS } from "@/config";
 import { getAuthSession } from "@/lib/auth";
 import db from "@/lib/db";
-import { Flame } from "lucide-react";
+import { Flame, Swords } from "lucide-react";
+import Image from "next/image";
 import { notFound } from "next/navigation";
-import { FC } from "react";
+import { FC, Fragment } from "react";
 
 interface CommunityPageProps {
   params: {
@@ -46,14 +47,28 @@ const CommunityPage: FC<CommunityPageProps> = async ({
   }
 
   return (
-    <div>
-      <h1 className="flex h-14 items-center gap-2 text-3xl font-semibold md:text-4xl">
-        <Flame className="h-8 w-8 md:h-10 md:w-10" /> {community.name}
+    <Fragment>
+      <h1 className="flex items-center gap-2.5 text-3xl font-semibold text-zinc-100 md:text-4xl">
+        {community.imageUrl ? (
+          <div className="relative aspect-square h-12 w-12 rounded-full">
+            <Image
+              src={community.imageUrl ?? "/community.jpg"}
+              alt="community image"
+              fill
+              className="rounded-full object-cover"
+            />
+          </div>
+        ) : (
+          <div className="relative h-10 w-10 rounded-full border-2 border-zinc-100">
+            <Swords className="absolute left-1.5 top-1.5" />
+          </div>
+        )}
+        {community.name}
       </h1>
 
       <MiniCreatePost session={session} />
       <PostFeed initialPosts={community.posts} communityName={community.name} />
-    </div>
+    </Fragment>
   );
 };
 

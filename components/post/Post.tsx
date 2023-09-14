@@ -31,14 +31,14 @@ const Post: FC<PostProps> = ({
   const postRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="rounded-lg border border-zinc-700 bg-zinc-900 shadow-md transition hover:bg-zinc-950">
+    <div className="rounded-lg border duration-300 border-zinc-700 bg-zinc-900 shadow-md transition hover:bg-zinc-950">
       <div className="flex px-4 py-4 md:px-6">
         <div className="w-full flex-1 sm:w-0">
           <div className="mt-1 flex max-h-80 w-full flex-col text-xs text-zinc-400 sm:flex-row sm:items-center">
             {communityName ? (
               <>
                 <Link
-                  className="text-sm text-zinc-100 underline underline-offset-2"
+                  className="text-sm text-zinc-100 w-fit underline underline-offset-2"
                   href={`/community/${communityName}`}
                 >
                   community/{communityName}

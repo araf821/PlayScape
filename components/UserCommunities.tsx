@@ -12,7 +12,7 @@ const UserCommunities: FC<UserCommunitiesProps> = async ({ userId }) => {
   const communities = await db.community.findMany({
     where: {
       members: {
-        every: {
+        some: {
           userId: userId,
         },
       },
@@ -29,18 +29,18 @@ const UserCommunities: FC<UserCommunitiesProps> = async ({ userId }) => {
 
   if (!communities) {
     return (
-      <div className="py-2 text-zinc-500">
+      <div className="py-2 text-zinc-200">
         Looks like you have not created or joined any communities.
       </div>
     );
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 text-zinc-100">
       {createdCommunities.length ? (
-        <div>
+        <div className="space-y-2">
           <p className="">Communities you&rsquo;ve created</p>
-          <hr className="border-zinc-200" />
+          <hr className="border-zinc-700" />
           <div className="mt-2 flex flex-col gap-2">
             {createdCommunities.map((community) => (
               <CommunityListItem

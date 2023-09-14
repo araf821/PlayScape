@@ -3,7 +3,7 @@ import PostFeed from "@/components/post/PostFeed";
 import { PAGINATION_RESULTS } from "@/config";
 import { getAuthSession } from "@/lib/auth";
 import db from "@/lib/db";
-import { Castle, Flame } from "lucide-react";
+import { Flame } from "lucide-react";
 import { notFound } from "next/navigation";
 import { FC } from "react";
 
@@ -45,13 +45,8 @@ const CommunityPage: FC<CommunityPageProps> = async ({
     return notFound();
   }
 
-  console.log(community);
-  console.log(community.name);
-
-  console.log(community.posts);
-
   return (
-    <div className="">
+    <div>
       <h1 className="flex h-14 items-center gap-2 text-3xl font-semibold md:text-4xl">
         <Flame className="h-8 w-8 md:h-10 md:w-10" /> {community.name}
       </h1>

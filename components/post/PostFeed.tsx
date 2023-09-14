@@ -22,7 +22,6 @@ const DynamicPost = dynamic(async () => (await import("./Post")).default, {
 
 const PostFeed: FC<PostFeedProps> = ({ initialPosts, communityName }) => {
   const lastPostRef = useRef<HTMLElement>(null);
-  console.log(initialPosts);
 
   const { ref, entry } = useIntersection({
     root: lastPostRef.current,

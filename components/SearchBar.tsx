@@ -26,7 +26,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
 
   const request = debounce(() => {
     refetch();
-  }, 300);
+  }, 250);
 
   const debounceRequest = useCallback(() => {
     request();
@@ -60,7 +60,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
   return (
     <Command
       ref={commandRef}
-      className="border- relative z-50 max-w-lg overflow-visible rounded-lg"
+      className="relative z-50 max-w-lg overflow-visible rounded-lg"
     >
       <CommandInput
         value={input}
@@ -73,13 +73,14 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
       />
 
       {input.length > 0 ? (
-        <CommandList className="absolute inset-x-0 top-full rounded-b-md bg-white shadow">
+        <CommandList className="absolute inset-x-0 top-full mt-1 rounded-md border border-zinc-700 bg-zinc-800 text-white shadow-md">
           {isFetched ? <CommandEmpty>No results found.</CommandEmpty> : null}
 
           {(queryResults?.length ?? 0) > 0 ? (
             <CommandGroup heading="Communities">
               {queryResults?.map((community) => (
                 <CommandItem
+                  className="font-semibold text-white hover:bg-background hover:text-primary"
                   key={community.id}
                   value={community.name}
                   onSelect={(e) => {

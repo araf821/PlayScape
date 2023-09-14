@@ -38,7 +38,6 @@ export function PostContentLoader() {
       <div className="animate-pulse space-y-2">
         <div className="h-4 w-[75%] rounded-lg bg-neutral-300" />
         <div className="h-4 w-full rounded-lg bg-neutral-300" />
-        <div className="mx-auto h-20 w-20 rounded-lg bg-neutral-300" />
         <div className="h-28 w-full rounded-lg bg-neutral-300" />
       </div>
     </div>

@@ -17,17 +17,17 @@ export default async function Home() {
         {session ? <CustomFeed /> : <GeneralFeed />}
 
         {/* feed sidebar */}
-        <div className="order-first mt-4 h-fit overflow-hidden rounded-lg border border-gray-200 shadow-md md:sticky md:top-[8dvh] md:order-last md:mt-0">
-          <div className="bg-red-200 px-4 py-4">
-            <p className="flex items-center gap-1.5 py-3 font-semibold">
+        <div className="order-first mt-4 h-fit overflow-hidden rounded-lg border  border-zinc-700 md:sticky md:top-[8dvh] md:order-last md:mt-0">
+          <div className="bg-zinc-900 px-4 py-4">
+            <p className="flex items-center gap-1.5 py-3 font-semibold text-zinc-100">
               <HomeIcon className="h-4 w-4 -translate-y-0.5" />
               Home
             </p>
           </div>
 
-          <div className="-my-3 divide-y divide-gray-100 px-4 py-4 text-sm leading-6 ">
+          <div className="-my-3 border-t space-y-4 border-zinc-800 bg-zinc-900 p-4 text-sm leading-6 ">
             <div className="flex justify-between gap-x-4 py-3">
-              <p className="text-zinc-700">
+              <p className="text-zinc-300">
                 Your personal PlayScape homepage! Check in with your favourite
                 communities.
               </p>
@@ -39,9 +39,14 @@ export default async function Home() {
               </Suspense>
             ) : null}
 
+            <hr className="border-zinc-700" />
+
             <Link
               href="/community/create"
-              className={buttonVariants({ className: "mb-6 mt-4 w-full" })}
+              className={buttonVariants({
+                variant: "outline",
+                className: "my-4 w-full",
+              })}
             >
               Create Community
             </Link>

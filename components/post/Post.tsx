@@ -31,14 +31,14 @@ const Post: FC<PostProps> = ({
   const postRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="rounded-lg bg-white shadow-md">
-      <div className="flex px-4 md:px-6 py-4">
+    <div className="rounded-lg border border-zinc-700 bg-zinc-900 shadow-md transition hover:bg-zinc-950">
+      <div className="flex px-4 py-4 md:px-6">
         <div className="w-full flex-1 sm:w-0">
-          <div className="mt-1 flex max-h-80 w-full flex-col text-xs text-gray-500 sm:flex-row sm:items-center">
+          <div className="mt-1 flex max-h-80 w-full flex-col text-xs text-zinc-400 sm:flex-row sm:items-center">
             {communityName ? (
               <>
                 <Link
-                  className="text-sm text-zinc-900 underline underline-offset-2"
+                  className="text-sm text-zinc-100 underline underline-offset-2"
                   href={`/community/${communityName}`}
                 >
                   community/{communityName}
@@ -54,8 +54,11 @@ const Post: FC<PostProps> = ({
             </div>
           </div>
 
-          <Link className="flex w-fit" href={`/community/${communityName}/post/${post.id}`}>
-            <h1 className="py-2 text-xl md:text-2xl font-semibold leading-6 text-gray-900">
+          <Link
+            className="flex w-fit"
+            href={`/community/${communityName}/post/${post.id}`}
+          >
+            <h1 className="py-2 text-xl font-semibold leading-6 text-white md:text-2xl">
               {post.title}
             </h1>
           </Link>
@@ -73,7 +76,7 @@ const Post: FC<PostProps> = ({
         </div>
       </div>
 
-      <div className="z-20 flex items-center justify-between bg-gray-50 p-4 text-sm">
+      <div className="z-20 flex items-center justify-between p-4 text-sm group-hover:bg-zinc-900">
         <PostVoteClient
           postId={post.id}
           initialVote={currentVote?.type}
@@ -82,7 +85,7 @@ const Post: FC<PostProps> = ({
         />
 
         <Link
-          className="flex w-fit items-center gap-2"
+          className="flex w-fit items-center gap-2 text-zinc-100"
           href={`/community/${communityName}/post/${post.id}`}
         >
           <MessageSquare className="h-4 w-4" />

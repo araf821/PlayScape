@@ -28,11 +28,11 @@ const renderers = {
 
 const EditorOutput: FC<EditorOutputProps> = ({ content }) => {
   return (
-    <div className="break-words">
+    <div className="break-words text-zinc-100">
       <Output
         data={content}
         style={style}
-        className="text-sm"
+        className="text-sm "
         renderers={renderers}
       />
     </div>
@@ -51,7 +51,7 @@ function CustomImageRenderer({ data }: any) {
 
 function CustomCodeRenderer({ data }: any) {
   return (
-    <pre className="overflow-x-auto rounded-md bg-gray-800 p-4">
+    <pre className="overflow-x-auto rounded-md bg-slate-900 p-4">
       <code className="text-gray-100">{data.code}</code>
     </pre>
   );

@@ -8,7 +8,6 @@ import { PAGINATION_RESULTS } from "@/config";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
-import { Loader2 } from "lucide-react";
 
 interface PostFeedProps {
   initialPosts: ExtendedPost[];
@@ -86,14 +85,17 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, communityName }) => {
         }
 
         return (
-          <DynamicPost
-            currentVote={currentVote}
-            votesAmt={amountOfVotes}
-            key={post.id}
-            post={post}
-            numOfComments={post.comments.length}
-            communityName={post.community.name}
-          />
+          <>
+            <DynamicPost
+              currentVote={currentVote}
+              votesAmt={amountOfVotes}
+              key={post.id}
+              post={post}
+              numOfComments={post.comments.length}
+              communityName={post.community.name}
+            />
+            <hr className="border-zinc-700" />
+          </>
         );
       })}
 

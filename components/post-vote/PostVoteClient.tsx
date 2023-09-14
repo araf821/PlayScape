@@ -87,15 +87,20 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
         size="sm"
         variant="ghost"
         aria-label="upvote"
+        className="group"
       >
         <Smile
-          className={cn("h-5 w-5 text-zinc-700", {
-            "text-emerald-500": currentVote === "UP",
-          })}
+          className={cn(
+            "h-5 w-5 text-zinc-200 transition group-hover:text-zinc-800",
+            {
+              "text-emerald-500 group-hover:text-emerald-500":
+                currentVote === "UP",
+            },
+          )}
         />
       </Button>
 
-      <p className="py-2 text-center text-sm font-semibold text-zinc-900">
+      <p className="py-2 text-center text-sm font-semibold text-zinc-100">
         {numOfVotes}
       </p>
 
@@ -105,11 +110,15 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
         size="sm"
         variant="ghost"
         aria-label="upvote"
+        className="group"
       >
         <Frown
-          className={cn("h-5 w-5 text-zinc-700", {
-            "text-red-500": currentVote === "DOWN",
-          })}
+          className={cn(
+            "h-5 w-5 text-zinc-200 transition group-hover:text-zinc-800",
+            {
+              "text-red-500 group-hover:text-red-500": currentVote === "DOWN",
+            },
+          )}
         />
       </Button>
     </div>

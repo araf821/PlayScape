@@ -21,19 +21,19 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn(
-        "antialias light bg-white text-slate-900",
+        "antialias light",
         comfortaa.className,
         comfortaa.variable,
         kalam.variable,
       )}
     >
-      <body className="min-h-screen bg-zinc-800 pt-12 antialiased">
+      <body className="min-h-screen overflow-x-hidden bg-zinc-800 pt-14 antialiased">
         <Providers>
           <Navbar />
 
           {authModal}
 
-          <div className="container mx-auto h-full max-w-7xl pt-8">
+          <div className="container mx-auto h-full max-w-7xl overflow-x-hidden pt-8 xl:overflow-x-visible">
             {children}
           </div>
           <Toaster />

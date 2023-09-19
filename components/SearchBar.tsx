@@ -60,7 +60,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
   return (
     <Command
       ref={commandRef}
-      className="relative z-50 max-w-lg overflow-visible rounded-lg"
+      className="relative z-50 max-w-lg overflow-visible rounded-lg bg-black/20 py-1 text-white"
     >
       <CommandInput
         value={input}
@@ -69,7 +69,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
           debounceRequest();
         }}
         placeholder="Search for communities..."
-        className="border-none outline-none ring-0 focus:border-none focus:outline-0"
+        className="border-none text-base outline-none ring-0 focus:border-none focus:outline-0"
       />
 
       {input.length > 0 ? (
@@ -80,7 +80,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
             <CommandGroup heading="Communities">
               {queryResults?.map((community) => (
                 <CommandItem
-                  className="font-semibold text-white hover:bg-background hover:text-primary"
+                  className="font-semibold text-white hover:bg-background hover:text-black"
                   key={community.id}
                   value={community.name}
                   onSelect={(e) => {

@@ -85,15 +85,13 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
         disabled={isLoading}
         onClick={() => vote("UP")}
         size="sm"
-        variant="ghost"
         aria-label="upvote"
-        className="group"
       >
         <Smile
           className={cn(
-            "h-5 w-5 text-zinc-200 transition group-hover:text-zinc-800",
+            "h-5 w-5 text-zinc-200 transition",
             {
-              "text-emerald-500 group-hover:text-emerald-500":
+              "text-emerald-500 -hover:text-emerald-500":
                 currentVote === "UP",
             },
           )}
@@ -108,15 +106,13 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
         disabled={isLoading}
         onClick={() => vote("DOWN")}
         size="sm"
-        variant="ghost"
         aria-label="upvote"
-        className="group"
       >
         <Frown
           className={cn(
-            "h-5 w-5 text-zinc-200 transition group-hover:text-zinc-800",
+            "h-5 w-5 text-zinc-200 transition",
             {
-              "text-red-500 group-hover:text-red-500": currentVote === "DOWN",
+              "text-red-500 -hover:text-red-500": currentVote === "DOWN",
             },
           )}
         />

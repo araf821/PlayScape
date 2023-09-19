@@ -69,7 +69,7 @@ const PostComment: FC<PostCommentProps> = ({
   });
 
   return (
-    <div ref={commentRef} className="flex flex-col">
+    <div ref={commentRef} className="flex text-white flex-col">
       <div className="flex items-center">
         <UserAvatar
           user={{
@@ -80,16 +80,16 @@ const PostComment: FC<PostCommentProps> = ({
         />
 
         <div className="ml-2 flex items-center gap-x-2">
-          <p className="text-sm font-medium text-gray-900">
+          <p className="text-sm font-medium text-zinc-100">
             u/{comment.author.username}
           </p>
-          <p className="max-h-40 truncate text-xs text-zinc-500">
+          <p className="max-h-40 truncate text-xs text-zinc-400">
             {formatTimeToNow(new Date(comment.createdAt))}
           </p>
         </div>
       </div>
 
-      <p className="break-words mt-2 text-sm text-zinc-900">
+      <p className="break-words mt-2 text-sm text-zinc-100">
         {comment.text}
       </p>
 
@@ -105,8 +105,8 @@ const PostComment: FC<PostCommentProps> = ({
             if (!session?.user) return router.push("/sign-in");
             setIsReplying(true);
           }}
-          variant="ghost"
           size="xs"
+          className="text-zinc-100"
         >
           <MessageSquare className="mr-1.5 h-4 w-4" />
           Reply

@@ -47,7 +47,7 @@ const page: FC<pageProps> = async ({ params }: pageProps) => {
 
   return (
     <div className="">
-      <div className="flex h-full flex-col items-center justify-between sm:flex-row sm:items-start">
+      <div className="flex h-full flex-col items-center justify-between sm:flex-row sm:items-start sm:gap-x-1">
         <Suspense fallback={<PostVoteLoader />}>
           <PostVoteServer
             postId={post?.id ?? cachedPost.id}
@@ -61,17 +61,17 @@ const page: FC<pageProps> = async ({ params }: pageProps) => {
                 },
               });
             }}
-            className="hidden sm:block"
+            className="hidden rounded-md bg-zinc-900 p-1 sm:block"
           />
         </Suspense>
 
-        <div className="w-full flex-1 rounded-sm bg-white p-4 sm:w-0">
-          <p className="mt-1 max-h-40 truncate text-xs text-gray-500">
+        <div className="w-full flex-1 rounded-sm bg-zinc-900 p-4 sm:w-0">
+          <p className="mt-1 max-h-40 truncate text-sm text-gray-400">
             Posted by u/{post?.author.username ?? cachedPost.authorName}
             {" • "}
             {formatTimeToNow(new Date(post?.createdAt ?? cachedPost.createdAt))}
           </p>
-          <h1 className="py-2 text-xl font-semibold leading-6 text-gray-900">
+          <h1 className="py-2 text-xl font-semibold leading-6 text-zinc-100">
             {post?.title ?? cachedPost.title}
           </h1>
 

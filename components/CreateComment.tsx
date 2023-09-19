@@ -59,7 +59,7 @@ const CreateComment: FC<CreateCommentProps> = ({ postId, replyToId }) => {
 
   return (
     <div className="grid w-full gap-1.5">
-      <Label htmlFor="comment">Your comment</Label>
+      <Label htmlFor="comment" className="text-zinc-300">Your comment</Label>
       <div className="mt-2">
         <Textarea
           id="comment"
@@ -67,6 +67,7 @@ const CreateComment: FC<CreateCommentProps> = ({ postId, replyToId }) => {
           onChange={(e) => setInput(e.target.value)}
           rows={1}
           placeholder="What are your thoughts?"
+          className="bg-zinc-800 text-zinc-100"
         />
 
         <div className="mt-2 flex justify-end">

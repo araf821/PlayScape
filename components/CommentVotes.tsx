@@ -79,17 +79,16 @@ const CommentVotes: FC<CommentVotesProps> = ({
         disabled={isLoading}
         onClick={() => vote("UP")}
         size="sm"
-        variant="ghost"
         aria-label="upvote"
       >
         <Smile
-          className={cn("h-5 w-5 text-zinc-700", {
+          className={cn("h-5 w-5 text-zinc-200", {
             "text-emerald-500": currentVote?.type === "UP",
           })}
         />
       </Button>
 
-      <p className="py-2 text-center text-sm font-semibold text-zinc-900">
+      <p className="py-2 text-center text-sm font-semibold text-zinc-100">
         {numOfVotes}
       </p>
 
@@ -97,11 +96,10 @@ const CommentVotes: FC<CommentVotesProps> = ({
         disabled={isLoading}
         onClick={() => vote("DOWN")}
         size="sm"
-        variant="ghost"
         aria-label="upvote"
       >
         <Frown
-          className={cn("h-5 w-5 text-zinc-700", {
+          className={cn("h-5 w-5 text-zinc-200", {
             "text-red-500": currentVote?.type === "DOWN",
           })}
         />

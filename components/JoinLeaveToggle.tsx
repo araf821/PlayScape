@@ -30,11 +30,9 @@ const JoinLeaveToggle: FC<JoinLeaveToggleProps> = ({
       const { data } = await axios.post("/api/community/join", payload);
       return data as string;
     },
-    onError: (err) => {
-      if (err instanceof AxiosError) {
-        if (err.status === 401) {
-          return loginToast();
-        }
+    onError: (err: any) => {
+      if (err?.response?.status === 401) {
+        return loginToast();
       }
 
       return toast({
@@ -65,11 +63,9 @@ const JoinLeaveToggle: FC<JoinLeaveToggleProps> = ({
       const { data } = await axios.post("/api/community/leave", payload);
       return data as string;
     },
-    onError: (err) => {
-      if (err instanceof AxiosError) {
-        if (err.status === 401) {
-          return loginToast();
-        }
+    onError: (err: any) => {
+      if (err?.response?.status === 401) {
+        return loginToast();
       }
 
       console.log(err);
@@ -105,7 +101,7 @@ const JoinLeaveToggle: FC<JoinLeaveToggleProps> = ({
     <Button
       onClick={() => join()}
       isLoading={isJoining}
-      className="mb-4 mt-1 w-full"
+      className="my-4 w-full"
     >
       Join to post
     </Button>

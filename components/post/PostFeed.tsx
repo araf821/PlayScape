@@ -98,26 +98,6 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, communityName }) => {
           </>
         );
       })}
-
-      {/* {isFetchingNextPage ? (
-        <div>
-          <Loader2 className="mx-auto animate-spin" size={60} />
-        </div>
-      ) : posts.length > 0 ? (
-        <p className="py-16 text-center">
-          You&rsquo;ve reached the end of the feed. Please touch grass.
-        </p>
-      ) : isFetched && posts.length === 0 ? (
-        <p className="py-16 text-center">
-          No posts to display.
-        </p>
-      ) : (
-        <>
-          <PostSkeleton />
-          <PostSkeleton />
-          <PostSkeleton />
-        </>
-      )} */}
     </ul>
   );
 };
@@ -126,14 +106,14 @@ export default PostFeed;
 
 export const PostSkeleton = () => {
   return (
-    <div className="rounded-lg bg-white shadow-md">
+    <div className="rounded-lg bg-zinc-900 shadow-md">
       <div className="flex animate-pulse flex-col gap-2 px-6 py-4">
-        <div className="h-4 w-20 rounded-lg bg-neutral-300 md:w-40" />
-        <div className="h-8 w-40 rounded-lg bg-neutral-300 md:w-full" />
-        <div className="h-60 w-full rounded-lg bg-neutral-300" />
+        <div className="h-4 w-20 rounded-lg bg-neutral-800 md:w-40" />
+        <div className="h-8 w-40 rounded-lg bg-neutral-800 md:w-full" />
+        <div className="h-60 w-full rounded-lg bg-neutral-800" />
         <div className="flex justify-between">
-          <div className="h-6 w-32 rounded-lg bg-neutral-300" />
-          <div className="h-6 w-32 rounded-lg bg-neutral-300" />
+          <div className="h-6 w-32 rounded-lg bg-neutral-800" />
+          <div className="h-6 w-32 rounded-lg bg-neutral-800" />
         </div>
       </div>
     </div>

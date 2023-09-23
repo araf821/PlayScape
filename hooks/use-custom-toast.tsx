@@ -10,10 +10,12 @@ export const useCustomToast = () => {
       variant: "destructive",
       action: (
         <Link
-          className={buttonVariants({ variant: "outline" })}
+          className={buttonVariants({ variant: "subtle" })}
           onClick={() => dismiss()}
           href="/sign-in"
-        >Login</Link>
+        >
+          Login
+        </Link>
       ),
     });
   };

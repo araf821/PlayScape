@@ -31,7 +31,7 @@ const Post: FC<PostProps> = ({
   const postRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="z-10 rounded-lg border border-zinc-700 bg-black/50 shadow-md backdrop-blur-xl transition duration-300 hover:bg-black/70">
+    <div className="z-10 rounded-lg border border-zinc-700 bg-black/50 shadow-md backdrop-blur-xl transition duration-300 hover:bg-black/70 hover:shadow-[0_0_15px] hover:shadow-blue-400/30">
       <div className="flex px-4 py-4 md:px-6">
         <div className="w-full flex-1 sm:w-0">
           <div className="mt-1 flex max-h-80 w-full flex-col text-xs text-zinc-400 sm:flex-row sm:items-center">
@@ -85,7 +85,7 @@ const Post: FC<PostProps> = ({
         />
 
         <Link
-          className="flex w-fit items-center gap-2 text-zinc-100"
+          className="flex w-fit items-center gap-2 rounded-md bg-zinc-800 p-2 text-zinc-100 transition hover:bg-zinc-700"
           href={`/community/${communityName}/post/${post.id}`}
         >
           <MessageSquare className="h-4 w-4" />

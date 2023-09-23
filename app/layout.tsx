@@ -27,7 +27,7 @@ export default function RootLayout({
         kalam.variable,
       )}
     >
-      <body className="min-h-screen overflow-x-hidden bg-zinc-800 pt-14 antialiased">
+      <body className="relative min-h-screen overflow-x-hidden bg-zinc-800 pt-14 antialiased">
         <Providers>
           <Navbar />
 

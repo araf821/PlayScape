@@ -88,13 +88,9 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
         aria-label="upvote"
       >
         <Smile
-          className={cn(
-            "h-5 w-5 text-zinc-200 transition",
-            {
-              "text-emerald-500 -hover:text-emerald-500":
-                currentVote === "UP",
-            },
-          )}
+          className={cn("h-5 w-5 text-zinc-200 transition", {
+            "-hover:text-emerald-500 text-emerald-500": currentVote === "UP",
+          })}
         />
       </Button>
 
@@ -109,12 +105,9 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
         aria-label="upvote"
       >
         <Frown
-          className={cn(
-            "h-5 w-5 text-zinc-200 transition",
-            {
-              "text-red-500 -hover:text-red-500": currentVote === "DOWN",
-            },
-          )}
+          className={cn("h-5 w-5 text-zinc-200 transition", {
+            "text-red-500 hover:text-red-500": currentVote === "DOWN",
+          })}
         />
       </Button>
     </div>

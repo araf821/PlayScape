@@ -11,7 +11,7 @@ export async function GET(req: Request) {
   const results = await db.community.findMany({
     where: {
       name: {
-        startsWith: q,
+        contains: q,
       },
     },
     include: {

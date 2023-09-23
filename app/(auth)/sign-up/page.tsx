@@ -7,11 +7,11 @@ const SignUpPage = () => {
   return (
     <div className="absolute inset-0">
       <div className="mx-auto flex h-full max-w-2xl flex-col items-center justify-center gap-20">
-        <Link
+      <Link
           href="/"
           className={cn(
-            buttonVariants({ variant: "subtle" }),
-            "-mt-20 self-start",
+            buttonVariants(),
+            "-mt-20 self-start hover:bg-zinc-700",
           )}
         >
           Back

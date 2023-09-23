@@ -10,8 +10,8 @@ const SignInPage = () => {
       <Link
           href="/"
           className={cn(
-            buttonVariants({ variant: "subtle" }),
-            "-mt-20 self-start",
+            buttonVariants(),
+            "-mt-20 self-start hover:bg-zinc-700",
           )}
         >
           Back

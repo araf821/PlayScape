@@ -19,7 +19,7 @@ const Navbar: FC<NavbarProps> = async ({}) => {
           <Icons.logo className="h-10 w-10 sm:h-8 sm:w-8" />
           <p className="hidden translate-y-1 font-kalam text-3xl font-bold md:block">
             Play
-            <span className="text-secondary">Scape</span>
+            <span className="text-sky-400">Scape</span>
           </p>
         </a>
 

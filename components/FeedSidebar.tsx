@@ -38,8 +38,8 @@ const FeedSidebar: FC<FeedSidebarProps> = async ({}) => {
         <Link
           href="/community/create"
           className={buttonVariants({
-            variant: "outline",
-            className: "my-4 w-full",
+            variant: "default",
+            className: "my-4 w-full bg-zinc-950 hover:bg-zinc-800",
           })}
         >
           Create Community
